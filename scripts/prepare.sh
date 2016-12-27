@@ -55,16 +55,6 @@ sudo apt-get install redis-server
 ./make_all.sh
 cd -
 
-prepare "sc-web"
-sudo apt-get install python-dev # required for numpy module
-cd ../sc-web/scripts
-./install_deps_ubuntu.sh
-./prepare_js.sh
-python build_components.py -i -a
-cd -
-echo -en $green"Copy server.conf"$rst"\n"
-cp -f ../config/server.conf ../sc-web/server/
-
 stage "Build knowledge base"
 
 ./build_kb.sh
