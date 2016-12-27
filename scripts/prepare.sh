@@ -45,6 +45,7 @@ prepare()
 }
 
 prepare "sc-machine"
+git checkout 06ab3c15b4c834157570b985850bbcdc62c980d9
 cd ../sc-machine/scripts
 ./install_deps_ubuntu.sh
 
