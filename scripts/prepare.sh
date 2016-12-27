@@ -45,7 +45,6 @@ prepare()
 }
 
 prepare "sc-machine"
-git checkout 06ab3c15b4c834157570b985850bbcdc62c980d9
 cd ../sc-machine/scripts
 ./install_deps_ubuntu.sh
 
@@ -54,6 +53,16 @@ sudo apt-get install redis-server
 ./clean_all.sh
 ./make_all.sh
 cd -
+
+prepare "sc-web"
+sudo apt-get install python-dev # required for numpy module
+cd ../sc-web/scripts
+./install_deps_ubuntu.sh
+./prepare_js.sh
+python build_components.py -i -a
+cd -
+echo -en $green"Copy server.conf"$rst"\n"
+cp -f ../config/server.conf ../sc-web/server/
 
 stage "Build knowledge base"
 
